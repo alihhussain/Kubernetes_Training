@@ -10,15 +10,21 @@ In this section we are going to perform the following:
 6. [**Push an enhanced version of info-app**](#push-an-enhanced-version-of-info-app)
 
 ## Prerequsites
-* Before beginning ensure docker is installed. To do so follow [these instructions.](https://docs.docker.com/install/)
-* Download Git Repository
+### Before beginning ensure docker is installed. To do so follow [these instructions.](https://docs.docker.com/install/)
+### Download Git Repository
 ```bash
 git clone https://github.com/alihhussain/Kubernetes_Training.git
 ```
-* Change working directory to Git cloned repo
+### Change working directory to Git cloned repo
 ```bash
 cd ./Kubernetes_Training
 ```
+
+### Access to a Kubernetes Environment
+There are a number of ways to do get a Kubernetes environment.
+1. [Deploy an AKS Cluster](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)
+2. [Deploy a cluster via ACS-Engine](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
+3. [Access Kubernetes API locally vis Minikube](https://github.com/kubernetes/minikube#minikube)
 
 ## Deploy an info-app container
 Lets build and test the info-app container locally.
@@ -91,6 +97,8 @@ curl http://localhost:80
 
 
 ## Deploy an info-app Kubernetes Pod
+Once you have access to a Kubernetes environment()
+
 ## Deploy an info-app Kubernetes Replication Controller
 ## Deploy an info-app Kubernetes Service
 ## Deploy an info-app Kubernetes Deployment
