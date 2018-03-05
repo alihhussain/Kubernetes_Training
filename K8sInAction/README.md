@@ -1,8 +1,8 @@
 # Kubernetes In Action
 In this section we are going to perform the following:
 1. [**Deploy an info-app container**](#deploy-an-info-app-container)
-    * Test Docker info-app container
-    * Test Kubernetes info-app container
+    * [Test Docker info-app container](#test-docker-info-app-container)
+    * [Test Kubernetes info-app container](#test-kubernetes-info-app-container)
 2. [**Deploy an info-app Kubernetes Pod**](#deploy-an-info-app-kubernetes-pod)
 3. [**Deploy an info-app Kubernetes Replication Controller**](#deploy-an-info-app-kubernetes-replication-controller)
 4. [**Deploy an info-app Kubernetes Service**](#deploy-an-info-app-kubernetes-service)
@@ -22,7 +22,7 @@ cd ./Kubernetes_Training
 
 ## Deploy an info-app container
 Lets build and test the info-app container locally.
-
+### Test Docker info-app container
 1. Build the docker image locally.
 ```bash
 # Make sure you cd into the cloned repo directory
@@ -30,7 +30,6 @@ cd ./Kubernetes_Training
 
 docker build -t="your_docker_hub_username/your_docker_hub_repo:tag" ./ACS-Engine_Testing/sampleContainer/
 ```
-
 2. Run a container based on the image
 ```bash
 docker run -d -p 80:80 --name info-app your_docker_hub_username/your_docker_hub_repo:tag
@@ -38,6 +37,8 @@ docker run -d -p 80:80 --name info-app your_docker_hub_username/your_docker_hub_
 3. Test the container via curl 
 ```bash
 curl http://localhost:80
+
+#Sample Output
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,29 +48,47 @@ curl http://localhost:80
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Docker Container Info Page</title>
     <link rel="stylesheet" href="/static/docker.css">
-</head>
-
-<body>
-    <div>
-        <h1>This is your Docker Container Info Page</h1>
-    </div>
-    <table>
-        <tbody>
-            <tr>
-                <th>Container IP:</th>
-                <th class="info">172.17.0.2</th>
-            </tr>
-            <tr>
-                <th>Container ID</th>
-                <th class="info">e603528828e27f469e2e97d768aed00320c3abc2fcb6944c84cb49354070831b</th>
-            </tr>
-        </tbody>
-    </table>
-</body>
-</html>
+...
 ```
 4. Test the container via browser: Visit [http://localhost:80](http://localhost:80)
 ![test](./src/docker_container.png)
+
+### Test Kubernetes info-app container
+* Prerequisite
+
+Ensure you cd into the cloned repository.
+```bash
+# Make sure you cd into the cloned repo directory
+cd ./Kubernetes_Training
+```
+Ensure the previously created container (*info-app*) is deleted.
+```bash
+docker stop info-app && docker rm info-app
+```
+
+1. Run a container based on the image
+```bash
+docker run -d -p 80:80 --name info-app --env-file ./ACS-Engine_Testing/sampleContainer/env.list your_docker_hub_username/your_docker_hub_repo:tag
+```
+2. Test the container via curl 
+```bash
+curl http://localhost:80
+
+#Sample Output
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kubernetes Info Page</title>
+    <link rel="stylesheet" href="/static/k8s.css">
+...
+```
+5. Test the container via browser: Visit [http://localhost:80](http://localhost:80)
+![test](./src/k8s_container.JPG)
+
 
 ## Deploy an info-app Kubernetes Pod
 ## Deploy an info-app Kubernetes Replication Controller
