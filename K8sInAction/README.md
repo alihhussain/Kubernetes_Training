@@ -97,8 +97,25 @@ curl http://localhost:80
 
 
 ## Deploy an info-app Kubernetes Pod
-Once you have access to a Kubernetes environment()
+Once you have access to a [Kubernetes environment](#access-to-a-kubernetes-environment), ensure you can access the cluster by running: ```kubectl create -f ./ACS-Engine_Testing/sampleContainer/k8s/info-po.yaml```
 
+Sample Output:
+```bash
+[K8sInAction]$ kubectl get nodes
+NAME                    STATUS    ROLES     AGE       VERSION
+k8s-agent-35640035-0    Ready     agent     5d        v1.7.9
+k8s-agent-35640035-1    Ready     agent     5d        v1.7.9
+k8s-agent-35640035-2    Ready     agent     5d        v1.7.9
+k8s-master-35640035-0   Ready     master    5d        v1.7.9
+```
+Deploy the pod by running:
+```bash
+#Insure your working directory is the downloaded Git Repo
+cd ./Kubernetes_Training
+
+[Kubernetes_Training]$ kubectl create -f ./ACS-Engine_Testing/sampleContainer/k8s/info-po.yaml
+pod "flask-info-app" created
+```
 ## Deploy an info-app Kubernetes Replication Controller
 ## Deploy an info-app Kubernetes Service
 ## Deploy an info-app Kubernetes Deployment
