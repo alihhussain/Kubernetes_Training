@@ -1,6 +1,5 @@
 ls -alh# Random Notes and Useful Commands!!
 
-
 Get info on Nodes Running: ```kubectl get nodes```
 
 Get info on Pods Running: ```kubectl get pods```
