@@ -1,9 +1,9 @@
 FROM ubuntu:latest
 MAINTAINER Ali Hussain "alhussai@microsoft.com"
 RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
+RUN apt-get install -y python-pip python-dev build-essential curl net-tools
 RUN pip install --upgrade pip
 COPY . /app
 RUN pip install -r /app/requirements.txt
 ENTRYPOINT ["/usr/bin/python", "/app/app.py"]
-#ENTRYPOINT ["/bin/bash"]
+# ENTRYPOINT ["/bin/bash"]
